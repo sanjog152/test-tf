@@ -8,7 +8,7 @@ pipeline {
     }
 
   environment {
-    SVC_ACCOUNT_KEY = "Test"
+    Token = "Test"
   }
 
   stages {
@@ -19,7 +19,7 @@ pipeline {
       }
     }
 
-    stage('TF Plan') {
+    stage('Terraform Plan') {
       steps {
           sh 'terraform init'
           sh 'terraform plan -out myplan'
@@ -35,7 +35,7 @@ pipeline {
       }
     }
 
-    stage('TF Apply') {
+    stage('Terraform Apply') {
       steps {
           sh 'terraform apply -input=false myplan'
       }
