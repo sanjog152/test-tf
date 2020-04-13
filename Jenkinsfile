@@ -30,7 +30,7 @@ pipeline {
     stage('Approval') {
       steps {
         script {
-          def userInput = input(id: 'accepted', message: 'Apply Terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Apply terraform', name: 'accepted'] ])
+          def userInput = input(id: 'proceed', message: 'Apply Terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Apply terraform', name: 'proceed'] ])
         }
       }
     }
