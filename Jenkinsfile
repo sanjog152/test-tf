@@ -1,7 +1,10 @@
 pipeline {
 
     agent {
-        docker { image 'hashicorp/terraform' }
+        docker {
+            image 'hashicorp/terraform'
+            args '--entrypoint='
+        }
     }
 
   environment {
