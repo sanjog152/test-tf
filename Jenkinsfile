@@ -1,6 +1,8 @@
 pipeline {
 
-  agent any
+    agent {
+        docker { image 'hashicorp/terraform' }
+    }
 
   environment {
     SVC_ACCOUNT_KEY = "Test"
@@ -18,10 +20,9 @@ pipeline {
 
     stage('TF Plan') {
       steps {
-        container('terraform') {
           sh 'terraform init'
           sh 'terraform plan -out myplan'
-        }
+        
       }      
     }
 
@@ -35,9 +36,7 @@ pipeline {
 
     stage('TF Apply') {
       steps {
-        container('terraform') {
           sh 'terraform apply -input=false myplan'
-        }
       }
     }
 
