@@ -4,5 +4,5 @@ variable "users" {
 }
 
 output "user_type" {
-    value = "${var.users.type}"
+    value = "${var.users}"
 }
