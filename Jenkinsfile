@@ -8,7 +8,7 @@ pipeline {
     }
 
   environment {
-    Token = "Test"
+    VAR_FILE="vars/test.tvars"
   }
 
   stages {
@@ -22,7 +22,7 @@ pipeline {
     stage('Terraform Plan') {
       steps {
           sh 'terraform init'
-          sh 'terraform plan -out myplan'
+          sh 'terraform -var-file=${VAR_FILE} plan -out myplan'
         
       }      
     }
@@ -37,7 +37,7 @@ pipeline {
 
     stage('Terraform Apply') {
       steps {
-          sh 'terraform apply -input=false myplan'
+          sh 'terraform apply -var-file=${VAR_FILE} -input=false myplan'
       }
     }
 
