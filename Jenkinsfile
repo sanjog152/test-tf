@@ -22,7 +22,7 @@ pipeline {
     stage('Terraform Plan') {
       steps {
           sh 'terraform init'
-          sh 'terraform -var-file=${VAR_FILE} plan -out myplan'
+          sh 'terraform  plan -var-file=${VAR_FILE} -out myplan'
         
       }      
     }
@@ -37,7 +37,7 @@ pipeline {
 
     stage('Terraform Apply') {
       steps {
-          sh 'terraform apply -var-file=${VAR_FILE} -input=false myplan'
+          sh 'terraform apply  -input=false -var-file=${VAR_FILE} myplan'
       }
     }
 
