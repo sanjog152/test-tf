@@ -37,7 +37,7 @@ pipeline {
 
     stage('Terraform Apply') {
       steps {
-          sh 'terraform apply  -input=false -var-file=${VAR_FILE} myplan'
+          sh 'terraform apply  -input=false myplan'
       }
     }
 
