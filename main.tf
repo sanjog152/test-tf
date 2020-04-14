@@ -5,3 +5,7 @@ variable "users" {
 output "user_type" {
     value = "${var.users}"
 }
+
+output "region" {
+    value = "${var.region}"
+}
